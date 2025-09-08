@@ -228,11 +228,12 @@ def hunter_domain_search(company_url, limit=5):
 # ----------------------------
 
 def main():
-    client = connect_sheets("credentials.json")
+    client = connect_sheets()
 
     # Replace with your actual sheet IDs
-    INPUT_SHEET_ID = "1DsUI1U7VgGDC67hg7BAJtpOnDCTCsjL85R5-NfZrcrw"
+    INPUT_SHEET_ID = os.getenv("INPUT_SHEET_ID", "")
     OUTPUT_SHEET_ID = INPUT_SHEET_ID
+
 
     df, input_sheet = load_input_sheet(client, INPUT_SHEET_ID, "Partners")
 
@@ -285,3 +286,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
